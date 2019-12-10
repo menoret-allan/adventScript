@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# echo "$( dirname "${BASH_SOURCE[0]}" )"
+
 if [ $# -eq 1  ]
 then
-    dotnet new sln -o "AdventCalendar2019-$1"
-    cd "AdventCalendar2019-$1"
+    PROJECT_NAME="AdventCalendar2019-$1"
+    dotnet new sln -o $PROJECT_NAME
+    cd $PROJECT_NAME
     dotnet new classLib -lang F# -o Core
     dotnet new console -lang F# -o Console
     dotnet new xunit -lang F# -o Tests
@@ -16,10 +19,17 @@ then
     dotnet sln add Tests/Tests.fsproj
     dotnet sln add Console/Console.fsproj
 
+    DIR_PATH=".$( dirname "${BASH_SOURCE[0]}" )/"
+    BUILD_FILE_PATH="${DIR_PATH}build.yml"
+    GITHUB_FOLDER_PATH=".github/workflows"
+    echo "${DIR_PATH} - ${BUILD_FILE_PATH} - ${GITHUB_FOLDER_PATH}"
+    mkdir -p $GITHUB_FOLDER_PATH
+    cp $BUILD_FILE_PATH $GITHUB_FOLDER_PATH
+
     git init
     curl https://gist.githubusercontent.com/geoder101/aa2ab1ab417fbc52bb8b/raw/1a1642c53f0736f55e9a9797e802788c24c99b73/.gitignore >> .gitignore
     git add -A
     git commit -m "initial commit <3"
 else
-    echo "Give a day :)"
+    echo "You should give the day of the event :)"
 fi
