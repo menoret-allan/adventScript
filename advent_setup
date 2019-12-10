@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ $# -eq 1  ]
+then
+    dotnet new sln -o "AdventCalendar2019-$1"
+    cd "AdventCalendar2019-$1"
+    dotnet new classLib -lang F# -o Core
+    dotnet new console -lang F# -o Console
+    dotnet new xunit -lang F# -o Tests
+    dotnet add  Tests/Tests.fsproj package FsUnit
+
+    dotnet add Tests/Tests.fsproj reference Core/Core.fsproj
+    dotnet add Console/Console.fsproj reference Core/Core.fsproj
+
+    dotnet sln add Core/Core.fsproj
+    dotnet sln add Tests/Tests.fsproj
+    dotnet sln add Console/Console.fsproj
+
+    git init
+    curl https://gist.githubusercontent.com/geoder101/aa2ab1ab417fbc52bb8b/raw/1a1642c53f0736f55e9a9797e802788c24c99b73/.gitignore >> .gitignore
+    git add -A
+    git commit -m "initial commit <3"
+else
+    echo "Give a day :)"
+fi
