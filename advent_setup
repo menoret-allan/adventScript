@@ -29,7 +29,7 @@ then
     echo "
 [![Tests](https://github.com/menoret-allan/${PROJECT_NAME}/workflows/Run%20F%23%20tests/badge.svg)](https://github.com/menoret-allan/${PROJECT_NAME}/actions)
 
-#${PROJECT_NAME}
+# ${PROJECT_NAME}
 
 advent calendar exercice :)" >> README.md
 
