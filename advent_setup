@@ -26,6 +26,13 @@ then
     mkdir -p $GITHUB_FOLDER_PATH
     cp $BUILD_FILE_PATH $GITHUB_FOLDER_PATH
 
+    echo "
+[![Tests](https://github.com/menoret-allan/${PROJECT_NAME}/workflows/Run%20F%23%20tests/badge.svg)](https://github.com/menoret-allan/${PROJECT_NAME}/actions)
+
+#${PROJECT_NAME}
+
+advent calendar exercice :)" >> README.md
+
     git init
     curl https://gist.githubusercontent.com/geoder101/aa2ab1ab417fbc52bb8b/raw/1a1642c53f0736f55e9a9797e802788c24c99b73/.gitignore >> .gitignore
     git add -A
