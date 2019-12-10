@@ -4,7 +4,7 @@
 
 if [ $# -eq 1  ]
 then
-    PROJECT_NAME="AdventCalendar2019-$1"
+    PROJECT_NAME="AdventCalendar2019_$1"
     dotnet new sln -o $PROJECT_NAME
     cd $PROJECT_NAME
     dotnet new classLib -lang F# -o Core
