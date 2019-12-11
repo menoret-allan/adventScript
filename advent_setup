@@ -33,8 +33,10 @@ then
 
 advent calendar exercice 🤶🎅🎄🎁" >> README.md
 
+    GIT_IGNORE_FILE_PATH="${DIR_PATH}gitignore"
+    cp $GIT_IGNORE_FILE_PATH .gitignore
+
     git init
-    curl https://gist.githubusercontent.com/geoder101/aa2ab1ab417fbc52bb8b/raw/1a1642c53f0736f55e9a9797e802788c24c99b73/.gitignore >> .gitignore
     git add -A
     git commit -m "initial commit <3"
 else
